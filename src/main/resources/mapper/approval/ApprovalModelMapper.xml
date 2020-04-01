@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.worth.tools.approval.mapper.ApprovalModelMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.worth.tools.approval.domain.ApprovalModel">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="type" property="type" />
+        <result column="status" property="status" />
+        <result column="gmt_create" property="gmtCreate" />
+        <result column="user_create" property="userCreate" />
+        <result column="gmt_update" property="gmtUpdate" />
+        <result column="user_update" property="userUpdate" />
+        <result column="del_flag" property="delFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, type, status, gmt_create AS gmtCreate, user_create AS userCreate, gmt_update AS gmtUpdate, user_update AS userUpdate, del_flag AS delFlag
+    </sql>
+    <select id="get" resultType="cn.worth.tools.approval.vo.ApprovalModelVO">
+        select <include refid="Base_Column_List"/>
+        from approval_model where id = #{id}
+    </select>
+    <select id="pageVO" resultType="cn.worth.tools.approval.vo.ApprovalModelVO">
+        select <include refid="Base_Column_List"/>
+        from approval_model
+        <where>
+            del_flag = 0
+            <if test="null != type">and `type` = #{type}</if>
+            <if test="null != status">and `status` = #{status}</if>
+        </where>
+    </select>
+
+</mapper>

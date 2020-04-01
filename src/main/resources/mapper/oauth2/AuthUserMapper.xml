@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.worth.oauth2.mapper.AuthUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.worth.oauth2.domain.AuthUser">
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="sex" property="sex" />
+        <result column="avatar" property="avatar" />
+        <result column="email" property="email" />
+        <result column="mobile" property="mobile" />
+        <result column="tenant_id" property="tenantId" />
+        <result column="status" property="status" />
+    </resultMap>
+
+    <!-- userVo结果集 -->
+    <resultMap id="userVoResultMap" type="cn.worth.core.domain.LoginUser">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="email" property="email"/>
+        <result column="avatar" property="avatar"/>
+        <result column="tenant_id" property="tenantId"/>
+        <result column="mobile" property="mobile" />
+        <result column="status" property="status"/>
+        <result column="real_name" property="realName"/>
+        <collection property="roles" ofType="cn.worth.core.domain.RoleVO">
+            <id property="id" column="rid"/>
+            <result property="roleCode" column="role_code"/>
+            <collection property="permissions" ofType="cn.worth.core.domain.MenuVO">
+                <id property="id" column="mid"/>
+                <result property="permission" column="permission"/>
+                <result property="url" column="url"/>
+                <result property="method" column="method"/>
+                <result property="type" column="type"/>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <sql id="selectUserVoColumn">
+        SELECT
+            u.id,
+            u.username,
+            u.`password`,
+            u.real_name,
+            u.sex,
+            u.email,
+	        u.avatar,
+            u.`status`,
+            u.mobile,
+            u.tenant_id,
+            r.id rid,
+            r.role_code,
+            m.id mid,
+            m.permission,
+            m.url,
+            m.method,
+            m.type
+        FROM
+            sys_user AS u
+            LEFT JOIN sys_user_role AS ur ON ur.user_id = u.id
+            LEFT JOIN sys_role AS r ON r.id = ur.role_id
+            LEFT JOIN sys_role_menu AS rm ON rm.role_id = r.id
+            LEFT JOIN sys_menu AS m ON m.id = rm.menu_id
+    </sql>
+
+
+    <select id="loadUserByUsername" resultMap="userVoResultMap">
+        <include refid="selectUserVoColumn"/>
+        WHERE u.username = #{username}
+    </select>
+
+</mapper>

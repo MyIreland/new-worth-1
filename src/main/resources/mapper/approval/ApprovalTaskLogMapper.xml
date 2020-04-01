@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.worth.tools.approval.mapper.ApprovalTaskLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.worth.tools.approval.domain.ApprovalTaskLog">
+        <id column="id" property="id" />
+        <result column="type" property="type" />
+        <result column="action_task_id" property="actionTaskId" />
+        <result column="action_user" property="actionUser" />
+        <result column="action_status" property="actionStatus" />
+        <result column="action_time" property="actionTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, type, action_task_id AS actionTaskId, action_user AS actionUser, action_status AS actionStatus, action_time AS actionTime
+    </sql>
+
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.worth.tools.file.mapper.ImportErrorMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.worth.tools.file.domain.ImportError">
+        <id column="id" property="id" />
+        <result column="import_id" property="importId" />
+        <result column="error_row" property="errorRow" />
+        <result column="description" property="description" />
+        <result column="gmt_create" property="gmtCreate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, import_id AS importId, error_row AS errorRow, description, gmt_create AS gmtCreate
+    </sql>
+
+</mapper>

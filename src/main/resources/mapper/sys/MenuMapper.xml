@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.worth.sys.mapper.MenuMapper">
+
+    <sql id="findMenuBaseSql">
+        SELECT
+          m.*
+        FROM
+            sys_menu m,
+            sys_role_menu rm,
+            sys_role r
+        WHERE
+            m.id = rm.menu_id
+        AND r.id = rm.role_id
+        <if test="null != roleIds and roleIds.size() != 0">
+            AND r.id IN
+            <foreach close=")" collection="roleIds" item="each" open="(" separator=",">
+                #{each}
+            </foreach>
+        </if>
+    </sql>
+    <select id="findPermsByRoleIds" resultType="cn.worth.core.domain.MenuVO">
+        <include refid="findMenuBaseSql"/>
+        ORDER BY
+          m.sort
+    </select>
+
+    <select id="findMenusByRoleIds" resultType="cn.worth.core.domain.MenuVO">
+
+        <include refid="findMenuBaseSql"/>
+        AND m.TYPE != 2
+
+    </select>
+
+</mapper>
