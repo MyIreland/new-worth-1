@@ -3,7 +3,7 @@
 <mapper namespace="cn.worth.tools.file.mapper.ImportMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="cn.worth.tools.file.domain.Import">
+    <resultMap id="BaseResultMap" type="cn.worth.file.domain.Import">
         <id column="id" property="id" />
         <result column="file_id" property="fileId" />
         <result column="file_url" property="fileUrl" />

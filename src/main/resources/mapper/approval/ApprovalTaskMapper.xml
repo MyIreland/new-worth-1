@@ -3,7 +3,7 @@
 <mapper namespace="cn.worth.tools.approval.mapper.ApprovalTaskMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="cn.worth.tools.approval.domain.ApprovalTask">
+    <resultMap id="BaseResultMap" type="cn.worth.approval.domain.ApprovalTask">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
         <result column="type" property="type"/>
@@ -18,13 +18,13 @@
     <sql id="Base_Column_List">
         id, name, type, status,user_create_name as userCreateName, current_process, gmt_create AS gmtCreate, user_create AS userCreate
     </sql>
-    <select id="getVO" resultType="cn.worth.tools.approval.vo.ApprovalTaskVO">
+    <select id="getVO" resultType="cn.worth.approval.vo.ApprovalTaskVO">
         select
         <include refid="Base_Column_List"/>
         from approval_task
         where id = #{id}
     </select>
-    <select id="pageVO" resultType="cn.worth.tools.approval.vo.ApprovalTaskVO">
+    <select id="pageVO" resultType="cn.worth.approval.vo.ApprovalTaskVO">
         select
         <include refid="Base_Column_List"/>
         from approval_task
@@ -33,14 +33,14 @@
             <if test="null != status">and `status` = #{status}</if>
         </where>
     </select>
-    <select id="pageByUser" resultType="cn.worth.tools.approval.vo.ApprovalTaskVO">
+    <select id="pageByUser" resultType="cn.worth.approval.vo.ApprovalTaskVO">
         select
         <include refid="Base_Column_List"/>
         from approval_task where user_create = #{userId}
         <if test="null != param.type">and `type` = #{param.type}</if>
         <if test="null != param.status">and `status` = #{param.status}</if>
     </select>
-    <select id="getByIds" resultType="cn.worth.tools.approval.vo.ApprovalTaskVO">
+    <select id="getByIds" resultType="cn.worth.approval.vo.ApprovalTaskVO">
         select
         <include refid="Base_Column_List"/>
         from approval_task where id in
@@ -48,7 +48,7 @@
             #{each}
         </foreach>
     </select>
-    <select id="pageMyApprove" resultType="cn.worth.tools.approval.vo.ApprovalTaskVO">
+    <select id="pageMyApprove" resultType="cn.worth.approval.vo.ApprovalTaskVO">
         SELECT
             t.id,
             t.NAME,

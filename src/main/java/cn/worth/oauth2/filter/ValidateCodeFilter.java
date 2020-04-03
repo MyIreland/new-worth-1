@@ -22,15 +22,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
 
-/**
- * <p>
- *  security.validate.code 默认 为false，开启需要设置为true
- * </p>
- *
- * @author zhangjinkun@xdf.cn
- * @date 2018/5/10
- *
- */
 @Slf4j
 //@Configuration("validateCodeFilter")
 //@ConditionalOnProperty(value = "security.validate.code", havingValue = "true")

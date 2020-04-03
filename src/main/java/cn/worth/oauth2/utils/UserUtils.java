@@ -17,12 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
 import java.util.List;
 
-/**
- * 用户相关工具类
- *
- * @author zhangjinkun@xdf.cn
- * @date 2018/7/25
- */
 @Slf4j
 public class UserUtils {
     private static final ThreadLocal<String> THREAD_LOCAL_USER = new TransmittableThreadLocal<>();

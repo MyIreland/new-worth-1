@@ -3,7 +3,7 @@
 <mapper namespace="cn.worth.tools.approval.mapper.ApprovalModelMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="cn.worth.tools.approval.domain.ApprovalModel">
+    <resultMap id="BaseResultMap" type="cn.worth.approval.domain.ApprovalModel">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="type" property="type" />
@@ -19,11 +19,11 @@
     <sql id="Base_Column_List">
         id, name, type, status, gmt_create AS gmtCreate, user_create AS userCreate, gmt_update AS gmtUpdate, user_update AS userUpdate, del_flag AS delFlag
     </sql>
-    <select id="get" resultType="cn.worth.tools.approval.vo.ApprovalModelVO">
+    <select id="get" resultType="cn.worth.approval.vo.ApprovalModelVO">
         select <include refid="Base_Column_List"/>
         from approval_model where id = #{id}
     </select>
-    <select id="pageVO" resultType="cn.worth.tools.approval.vo.ApprovalModelVO">
+    <select id="pageVO" resultType="cn.worth.approval.vo.ApprovalModelVO">
         select <include refid="Base_Column_List"/>
         from approval_model
         <where>

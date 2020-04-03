@@ -1,4 +1,4 @@
-package cn.worth.redis;
+package cn.worth.redis.config;
 
 import cn.worth.redis.properties.WorthRedisProperties;
 import cn.worth.redis.utils.RedisClient;

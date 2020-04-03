@@ -41,7 +41,7 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: ${mybatisPlus.configuration.mapUnderscoreToCamelCase}
     log-impl: ${mybatisPlus.configuration.logImpl}
-    cache-enabled: ${mybatisPlus.configuration.cache-enabled}
+    cache-enabled: ${mybatisPlus.configuration.cacheEnabled}
 
 aliyun:
   oss:

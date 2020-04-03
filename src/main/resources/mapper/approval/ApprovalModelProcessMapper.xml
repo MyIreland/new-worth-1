@@ -3,7 +3,7 @@
 <mapper namespace="cn.worth.tools.approval.mapper.ApprovalModelProcessMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="cn.worth.tools.approval.domain.ApprovalModelProcess">
+    <resultMap id="BaseResultMap" type="cn.worth.approval.domain.ApprovalModelProcess">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="sort" property="sort" />

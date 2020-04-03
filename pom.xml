@@ -269,9 +269,6 @@
                 </excludes>
                 <filtering>false</filtering>
             </resource>
-            <resource>
-                <directory>src/main/webapp</directory>
-            </resource>
         </resources>
         <plugins>
             <plugin>

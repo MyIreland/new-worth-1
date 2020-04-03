@@ -3,7 +3,7 @@
 <mapper namespace="cn.worth.tools.approval.mapper.ApprovalTaskProcessMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="cn.worth.tools.approval.domain.ApprovalTaskProcess">
+    <resultMap id="BaseResultMap" type="cn.worth.approval.domain.ApprovalTaskProcess">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="status" property="status" />
@@ -22,7 +22,7 @@
         <if test="null != status">status = #{status}</if>
     </select>
 
-    <select id="nextProcess" resultType="cn.worth.tools.approval.domain.ApprovalTaskProcess">
+    <select id="nextProcess" resultType="cn.worth.approval.domain.ApprovalTaskProcess">
         SELECT
             <include refid="Base_Column_List"/>
         FROM
